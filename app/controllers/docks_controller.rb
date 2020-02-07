@@ -1,0 +1,2 @@
+class DocksController < ApplicationController
+end
