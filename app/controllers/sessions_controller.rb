@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     def create
     
     user_info = request.env['omniauth.auth']
-    render '/sessions/new'
+    redirect_to new_dock_path
+    # render '/sessions/new'
     end 
 end

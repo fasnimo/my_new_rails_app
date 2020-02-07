@@ -3,7 +3,7 @@ class CreateMissions < ActiveRecord::Migration[6.0]
     create_table :missions do |t|
       t.integer :company_id
       t.integer :dock_id
-      t.string :ship_name
+      t.string :ship
 
       t.timestamps
     end
