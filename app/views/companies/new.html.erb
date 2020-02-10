@@ -1,14 +1,14 @@
 <h1>New Company</h1>
 
-<%=form_for @company do |f|%>
-    <%=f.lable :name%>
-    <%=f.text_field :name%>
+<%=form_with model: @company, local: true do |f|%>
+    <%=f.label :name%>
+    <%=f.text_field :name%><br><br>
 
     <%=f.label :ship_name%>
-    <%=f.text_field :ship_name%>
+    <%=f.text_field :ship_name%><br><br>
     
-    <%=f.label :password_digest%>
-    <%=f.password_field :password_digest%>
+    <%=f.label :password, 'Password'%>
+    <%=f.password_field :password%><br><br>
 
     <%= f.submit "New Company"%>
 <%end%>

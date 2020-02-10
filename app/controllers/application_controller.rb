@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @company ||= Company.find_by_id(session[:company_id]) 
-  end 
+  end
+  
+#   def after_sign_in_path_for(resource)
+#     stored_location_for(resource) || session_path
+#   end
 
 #   def require_login
 #     if !current_company
