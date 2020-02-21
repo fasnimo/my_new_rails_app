@@ -1,0 +1,10 @@
+<h1>Dock Index</h1>
+<ol>
+<% @docks.each do |d| %>
+    <li>
+    <p>Ship Name: <%=d.name%></p>
+    <p>Loaction: <%=d.location%></p><br>
+    <%=link_to "New Mission", new_mission_path%>
+    </li>
+<% end %>
+</ol>

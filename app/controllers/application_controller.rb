@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user
+    before_action :current_user
 
   def current_user
-    @company ||= Company.find_by_id(session[:company_id]) 
+    # @company ||= Company.find_by_id(session[:company_id])
+    if session[:current_user_id]
+      @current_user = Company.find(session[:current_user_id])
+    end 
   end
   
 #   def after_sign_in_path_for(resource)

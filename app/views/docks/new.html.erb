@@ -1,1 +1,12 @@
 <h1>Welcome to New Docks</h1>
+
+<%= form_with model: @dock, local: true do |f| %>
+
+    <%=f.label "Name of Dock"%>
+    <%=f.text_field :name%><br>
+
+    <%=f.label "Location"%>
+    <%=f.text_field :location%><br>
+
+    <%=f.submit "Create"%>
+<%end%>

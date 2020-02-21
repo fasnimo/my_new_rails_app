@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
         
     def create
            @company = Company.find_by(:name => params[:name])
-             byebug
+            #  byebug
         if @company && @company.authenticate(params[:password])
-             byebug
+            #  byebug
             session[:company_id]=@company.id 
             # byebug
             redirect_to new_dock_path
@@ -33,6 +33,8 @@ class SessionsController < ApplicationController
             session.destroy
             redirect_to root_path
         end 
+        # session.delete(:user_id)
+        # redirect_to login_path, notice: "Logged out!"
      end 
 
      private

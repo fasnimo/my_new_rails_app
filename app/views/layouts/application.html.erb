@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <% if session[:current_user_id]%>
+      <nav>
+        You are logged in as: <%= @current_user.name%>
+      </nav>
+    <%end%>
+
+    <% if notice %>
+      	    <%= notice %>
+	<% end %>
+	
+	<% if alert %>
+      	    <%= alert %>
+	<% end %>
     <%= yield %>
   </body>
 </html>
