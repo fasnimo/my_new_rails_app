@@ -5,15 +5,33 @@ class MissionsController < ApplicationController
     end 
 
     def index 
-        @missions = Missions.all
+        @missions = Mission.all
     end 
 
     def create
-        @mission = Mission.new(m_params)
+        # @company = Company.find_by(id: params[:id])
+        # redirect_to missions_path
+        # byebug
+        #  @mission = current_user.mission.build(params[:mission][:company_id][:dock_id])
+        #  byebug
+        #  @mission.company_id = @company
+        # if @company.save
+        #     redirect_to company_path
+        # else 
+        #     redirect_to new_mission_path
+        # end 
+
+        #  @mission = Mission.create(m_params)
+        # byebug
+        #  if @mission.save 
+            # redirect_to mission_path
+            # redirect_to company_path
+        #  else
+            #  redirect_to new_mission_path
+        #  end 
     end 
 
     def edit
-
     end 
 
     def update
@@ -24,9 +42,13 @@ class MissionsController < ApplicationController
         end 
     end 
 
+    def show
+        @mission = Mission.find_by(m_params)
+    end
+
     def destroy
         Mission.find(params[:id]).destroy
-        redirect_to decision_path
+        redirect_to mission_path
     end 
 
     private

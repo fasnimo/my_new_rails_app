@@ -1,0 +1,10 @@
+<h1>Companies Index</h1>
+<ol>
+<% @companies.each do |c| %>
+    <li>
+    <p>Name: <%=c.name%></p>
+    <p>Ship Name: <%=c.ship_name%></p><br>
+    <%=link_to "To Docks", new_dock_path%>
+    </li>
+<% end %>
+</ol>

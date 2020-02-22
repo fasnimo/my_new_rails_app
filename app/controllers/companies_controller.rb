@@ -7,6 +7,10 @@ class CompaniesController < ApplicationController
         # end 
     end 
 
+    def index
+        @companies=Company.all
+    end 
+
     def create
         @company=Company.new(c_params)
         # byebug
@@ -24,6 +28,6 @@ class CompaniesController < ApplicationController
 
     private 
     def c_params
-        params.require(:company).permit(:name, :ship_name,:password)
+        params.require(:company).permit(:name, :ship_name, :password_digest)
     end
 end

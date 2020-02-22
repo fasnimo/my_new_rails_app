@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   root 'sessions#home'
     
-  resources :companies, only: [:new, :create, :show]
+  resources :companies, only: [:index, :new, :create, :show]
   resources :docks
   resources :missions 
 

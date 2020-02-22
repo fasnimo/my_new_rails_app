@@ -17,11 +17,28 @@ class DocksController < ApplicationController
             redirect_to new_dock_path
         end 
     end 
+
+    def edit
+    end 
+
+    def update
+        if @dock.update(d_params)
+            redirect_to dock_path
+        else
+            render 'edit'
+        end 
+    end 
         
 
     def show
-        @dock = Dock.find_by(d_params)
+        @dock = Dock.find_by(params[:id])
+        # @dock = Dock.find_by(d_params)
     end 
+
+    def destroy
+        Dock.find(params[:id]).destroy
+        redirect_to dock_path
+    end
 
     private
 

@@ -4,14 +4,19 @@ class SessionsController < ApplicationController
     end
         
     def create
-           @company = Company.find_by(:name => params[:name])
-            #  byebug
-        if @company && @company.authenticate(params[:password])
-            #  byebug
+        # @person = {:name => user_info[:extra][:name], :password => user_info[:extra][:password]}
+        #     render :new
+        @company = Company.find_by_name(params[:name])
+        #    
+         if @company && @company.authenticate(params[:password_digest])
+        #     
             session[:company_id]=@company.id 
-            # byebug
+        #     
             redirect_to new_dock_path
-            # byebug
+             if user_info
+                 redirect_to new_dock_path
+             end 
+            
    
         #     if user_info
         #        user_info
@@ -20,11 +25,11 @@ class SessionsController < ApplicationController
         #         #     u.name = user_info
         #         # end 
         #     end
-        # else 
-        #     render :new
+          else 
+            render :new
             # redirect_to root_path
-        end 
-            # render '/sessions/new'
+         end 
+            
     end 
 
 
@@ -40,7 +45,7 @@ class SessionsController < ApplicationController
      private
 
      def user_info
-        request.env['omniauth.auth']
+        request.env['omniauth.auth']['exra_info']
      end 
 end
 
