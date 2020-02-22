@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
     def create
         # @person = {:name => user_info[:extra][:name], :password => user_info[:extra][:password]}
         #     render :new
-        @company = Company.find_by_name(params[:name])
+        # @company = Company.find_by_name(params[:name])
         #    
-         if @company && @company.authenticate(params[:password_digest])
-        #     
-            session[:company_id]=@company.id 
-        #     
+         if @company && @company.authenticate(params[:name], params[:password_digest])
+            session[:current_user_id]=company.id
+            # session[:company_id]=@company.id 
+             
             redirect_to new_dock_path
              if user_info
                  redirect_to new_dock_path
@@ -34,12 +34,13 @@ class SessionsController < ApplicationController
 
 
     def destroy
-        if current_user
-            session.destroy
-            redirect_to root_path
-        end 
-        # session.delete(:user_id)
-        # redirect_to login_path, notice: "Logged out!"
+        # if current_user
+        #     session.destroy
+        #     redirect_to root_path
+        # end 
+         session.delete(:current_user_id)
+         @_current_user = nil
+         redirect_to root_path, notice: "Logged out!"
      end 
 
      private
@@ -49,4 +50,4 @@ class SessionsController < ApplicationController
      end 
 end
 
-# request.env['omniauth.auth']['info']['nickname']
+
