@@ -8,11 +8,11 @@ class CompaniesController < ApplicationController
     end 
 
     def index
-        @companies=Company.all
+        @companies = Company.all
     end 
 
     def create
-        @company=Company.new(c_params)
+        @company = Company.new(c_params)
         # byebug
         if @company.save
             session[:company_id] = @company.id

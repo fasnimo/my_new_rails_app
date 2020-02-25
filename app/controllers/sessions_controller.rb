@@ -7,9 +7,10 @@ class SessionsController < ApplicationController
         # @person = {:name => user_info[:extra][:name], :password => user_info[:extra][:password]}
         #     render :new
         # @company = Company.find_by_name(params[:name])
-        #    
+        #
+        @company = Company.find_by(:id => params[:company][:id])  
          if @company && @company.authenticate(params[:name], params[:password_digest])
-            session[:current_user_id]=company.id
+            session[:current_user_id] = @company.id
             # session[:company_id]=@company.id 
              
             redirect_to new_dock_path
