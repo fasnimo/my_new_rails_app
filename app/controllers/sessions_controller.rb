@@ -1,23 +1,31 @@
 class SessionsController < ApplicationController
     # skip_before_filter :verify_authenticity_token, :only => :create
+    skip_before_action :authorized, only: [:new, :create, :home]
     def home
     end
+
+    def new
+    end 
+
+    def login
+    end 
         
     def create
         # @person = {:name => user_info[:extra][:name], :password => user_info[:extra][:password]}
         #     render :new
         # @company = Company.find_by_name(params[:name])
         #
-        @company = Company.find_by(:id => params[:company][:id])  
-         if @company && @company.authenticate(params[:name], params[:password_digest])
-            session[:current_user_id] = @company.id
+        @company = Company.find_by(name: params[:name])  
+            # byebug
+         if @company && @company.authenticate(params["/signin"][:password])
+            #byebug
+            sessions[:company_id] = @company.id
             # session[:company_id]=@company.id 
-             
-            redirect_to new_dock_path
-             if user_info
-                 redirect_to new_dock_path
-             end 
-            
+            redirect_to company_path
+            if user_info
+                redirect_to company_path
+            end 
+        
    
         #     if user_info
         #        user_info
@@ -26,22 +34,26 @@ class SessionsController < ApplicationController
         #         #     u.name = user_info
         #         # end 
         #     end
-          else 
-            render :new
+        else 
+            redirect_to signup_path
             # redirect_to root_path
-         end 
+        end 
             
+    end 
+
+    def page_requires_login
+
     end 
 
 
     def destroy
-        # if current_user
-        #     session.destroy
-        #     redirect_to root_path
-        # end 
-         session.delete(:current_user_id)
-         @_current_user = nil
-         redirect_to root_path, notice: "Logged out!"
+        if current_user
+            session.destroy
+            redirect_to root_path
+        end 
+        #  session.delete(:current_user_id)
+        #  @_current_user = nil
+        #  redirect_to root_path, notice: "Logged out!"
      end 
 
      private

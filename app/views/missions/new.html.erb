@@ -8,8 +8,8 @@
     <%=f.label "Dock Name"%>
     <%=f.text_field :dock_id%><br>
 
-    <%=f.label "Ship"%>
-    <%=f.text_field :ship%><br>
+    <%=f.label :ship, "Ship Info"%><br>
+    <%=f.text_area :ship%><br>
     
-    <%=f.submit "Start Mission"%>
+    <%=f.submit "Mission Info"%>
 <%end%>

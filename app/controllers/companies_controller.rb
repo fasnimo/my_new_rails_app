@@ -1,7 +1,8 @@
 class CompaniesController < ApplicationController
+    skip_before_action :authorized, only: [:new, :create]
     # before_action :authenticate_company!, only: [:new, :create, :show]
     def new
-        @company=Company.new
+        @company = Company.new
         # if  session[:current_user]
         #     redirect_to root_path, notice: "Already logged in!"
         # end 
@@ -28,6 +29,6 @@ class CompaniesController < ApplicationController
 
     private 
     def c_params
-        params.require(:company).permit(:name, :ship_name, :password_digest)
+        params.require(:company).permit(:name, :ship_name, :password)
     end
 end

@@ -21,17 +21,18 @@ class MissionsController < ApplicationController
         #     redirect_to new_mission_path
         # end 
 
-        #  @mission = Mission.create(m_params)
+        @mission = Mission.new(m_params)
         # byebug
-        #  if @mission.save 
-            # redirect_to mission_path
+        if @mission.save 
+            redirect_to missions_path
             # redirect_to company_path
-        #  else
-            #  redirect_to new_mission_path
-        #  end 
+        else
+            redirect_to missions_path
+        end 
     end 
 
     def edit
+
     end 
 
     def update

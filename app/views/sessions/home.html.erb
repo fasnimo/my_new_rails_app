@@ -1,5 +1,9 @@
 <h1>Hello Sessions Home</h1>
 
+<% if logged_in? %>
+    <h1>You are Logged In, <%= current_user.name %></h1>
+<%end%>
+
 <h4><%=link_to('Sign in with Github', '/auth/github')%></h4>
 
 <h4><%= link_to "Sign UP", signup_path %></h4>

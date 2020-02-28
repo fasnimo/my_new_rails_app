@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root 'sessions#home'
     
   resources :companies, only: [:index, :new, :create, :show]
-  resources :docks
+  resources :docks do 
+    resources :missions
+  end 
   resources :missions 
 
   get '/signin', to: 'sessions#new'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   delete '/session', to: 'sessions#destroy'
   get '/signup', to: 'companies#new'
   post '/signup', to: 'companies#create'
+  get 'authorized', to: 'sessions#page_requires_login'
 
   get '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 end
