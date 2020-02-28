@@ -15,15 +15,16 @@ class SessionsController < ApplicationController
         #     render :new
         # @company = Company.find_by_name(params[:name])
         #
-        @company = Company.find_by(name: params[:name])  
-            # byebug
+        # byebug
+        @company = Company.find_by(name: params["/signin"][:name])  
+            #  byebug
          if @company && @company.authenticate(params["/signin"][:password])
-            #byebug
-            sessions[:company_id] = @company.id
-            # session[:company_id]=@company.id 
-            redirect_to company_path
+            # byebug
+            session[:company_id] = @company.id
+            # sessions[:company_id] = @company.id 
+            redirect_to docks_path
             if user_info
-                redirect_to company_path
+                redirect_to docks_path
             end 
         
    
@@ -59,7 +60,8 @@ class SessionsController < ApplicationController
      private
 
      def user_info
-        request.env['omniauth.auth']['exra_info']
+        request.env['omniauth.auth']
+        # request.env['omniauth.auth']['exra_info']
      end 
 end
 

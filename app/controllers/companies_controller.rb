@@ -13,8 +13,8 @@ class CompaniesController < ApplicationController
     end 
 
     def create
-        @company = Company.new(c_params)
-        # byebug
+        @company = Company.create(c_params)
+        # byebug mayby.Company.create
         if @company.save
             session[:company_id] = @company.id
             redirect_to new_dock_path
