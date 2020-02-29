@@ -1,3 +1,12 @@
 <h1>Mission Index</h1>
 
-<%=@mission.ship%>
+<ol>
+<% @missions.each do |m| %>
+    <li>
+    <p>Shipment: <%=d.ship%></p>
+    <p>Dock: <%=d.docks.name%></p><br>
+    <%=link_to "Mission Path", mission_path%>
+    </li>
+<% end %>
+</ol>
+<%= Mission.find(session[:company_id].name)%>

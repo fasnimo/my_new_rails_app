@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
     end 
         
     def create
-        
         #   byebug
         @company = Company.find_by(name: params["/signin"][:name])  
             #  byebug
