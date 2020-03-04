@@ -49,8 +49,9 @@ class SessionsController < ApplicationController
      end 
 
     def oauth_login
-        Company.from_omniauth(user_info)
         byebug
+        Company.from_omniauth(user_info)
+        # byebug
         # if user_info
         #     @company = Company.find_or_create_by(uid: user_info['uid']) do |u|
         #         u.name = user_info['info']['name']

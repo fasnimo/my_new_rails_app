@@ -3,10 +3,10 @@
 <ol>
 <% @missions.each do |m| %>
     <li>
-    <p>Shipment: <%=d.ship%></p>
-    <p>Dock: <%=d.docks.name%></p><br>
-    <%=link_to "Mission Path", mission_path%>
+    <p>Company: <%=m.company.name%></p>
+    <p>Shipment: <%=m.ship%></p>
+    <p>Dock: <%=m.dock.name%></p><br>
+    <%=link_to "Mission Path", mission_path(m)%>
     </li>
 <% end %>
 </ol>
-<%= Mission.find(session[:company_id].name)%>
