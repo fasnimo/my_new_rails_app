@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end 
   resources :missions 
 
+  patch '/missions/:id', to: 'mission#update'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/session', to: 'sessions#destroy'

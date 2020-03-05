@@ -1,5 +1,8 @@
 <h1>Mission Show</h1>
 
 
+<%= @mission.company.name%><br>
 
-<%= @mission.ship%>
+<%= @mission.ship%><br>
+<%= link_to "Edit Mission", edit_mission_path(@mission)%><br>
+<%= button_to "Sign Out", session_path, method: :delete %>

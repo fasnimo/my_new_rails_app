@@ -32,10 +32,11 @@ class MissionsController < ApplicationController
     end 
 
     def edit
-
+        @mission = Mission.find(params[:id])
     end 
 
     def update
+        @mission = Mission.find(params[:id])
         if @mission.update(m_params)
             redirect_to mission_path
         else
@@ -44,7 +45,7 @@ class MissionsController < ApplicationController
     end 
 
     def show
-        @mission = Mission.find_by(m_params)
+        @mission = Mission.find(params[:id])
     end
 
     def destroy
