@@ -20,14 +20,14 @@ class MissionsController < ApplicationController
         # else 
         #     redirect_to new_mission_path
         # end 
-
-        @mission = Mission.new(m_params)
         # byebug
-        if @mission.save 
+        @mission = Mission.new(m_params)
+        #  byebug
+        if @mission.save
             redirect_to missions_path
             # redirect_to company_path
         else
-            redirect_to missions_path
+            redirect_to new_mission_path
         end 
     end 
 
@@ -56,6 +56,7 @@ class MissionsController < ApplicationController
     private
 
     def m_params
+        # params.require(:mission).permit(:ship)
         params.require(:mission).permit(:company_id, :dock_id, :ship)
     end 
 end
