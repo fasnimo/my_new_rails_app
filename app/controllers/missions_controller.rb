@@ -36,6 +36,7 @@ class MissionsController < ApplicationController
     end 
 
     def update
+        byebug
         @mission = Mission.find(params[:id])
         if @mission.update(m_params)
             redirect_to mission_path

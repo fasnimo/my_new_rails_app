@@ -1,7 +1,7 @@
 class DocksController < ApplicationController
 
     def new
-        @dock=Dock.new
+        @dock = Dock.new
     end 
 
     def index
@@ -11,6 +11,8 @@ class DocksController < ApplicationController
     def create
         @dock = Dock.new(d_params)
         if @dock.save
+            session[:dock_id] = @dock.id
+            session[:title] = @dock.title
             # @mission = Mission.create
             redirect_to docks_path
         else 
@@ -43,7 +45,7 @@ class DocksController < ApplicationController
     private
 
     def d_params
-        params.require(:dock).permit(:name, :location)
+        params.require(:dock).permit(:title, :location)
     end 
 
 

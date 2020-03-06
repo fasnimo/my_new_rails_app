@@ -14,14 +14,13 @@ ActiveRecord::Schema.define(version: 2020_02_07_192842) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "ship_name"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "docks", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

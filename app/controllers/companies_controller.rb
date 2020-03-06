@@ -17,6 +17,7 @@ class CompaniesController < ApplicationController
         # byebug mayby.Company.create
         if @company.save
             session[:company_id] = @company.id
+            session[:name] = @company.name
             redirect_to new_dock_path
         else
             redirect_to root_path
@@ -29,6 +30,6 @@ class CompaniesController < ApplicationController
 
     private 
     def c_params
-        params.require(:company).permit(:name, :ship_name, :password)
+        params.require(:company).permit(:name, :password)
     end
 end

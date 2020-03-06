@@ -4,8 +4,8 @@
 <% @missions.each do |m| %>
     <li>
     <p>Company: <%=m.company.name%></p>
-    <p>Shipment: <%=m.ship%></p>
-    <p>Dock: <%=m.dock.name%></p><br>
+    <p>Ship Info: <%=m.ship%></p>
+    <p>Dock: <%=m.dock.title%></p><br>
     <%=link_to "Mission Path", mission_path(m)%>
     </li>
 <% end %>

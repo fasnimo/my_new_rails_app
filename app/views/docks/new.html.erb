@@ -3,9 +3,9 @@
 <%= form_with model: @dock, local: true do |f| %>
 
     <%=f.label "Name of Dock"%>
-    <%=f.text_field :name%><br>
-    <!--<%= f.label :name, "Dock Name"%>
-    <%= f.collection_select :name, Dock.all, :id, :name %><br>-->
+    <%=f.text_field :title%><br>
+    <!--<%= f.label :title, "Dock Name"%>
+    <%= f.collection_select :title, Dock.all, :id, :title %><br>-->
 
     <%=f.label "Location"%>
     <%=f.text_field :location%><br>

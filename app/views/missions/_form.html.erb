@@ -1,9 +1,10 @@
-<%= form_with model: @mission, local: true do |f| %>
-    <%= f.label :company_id %>
-    <%= f.number_field :company_id %>
+<h3>Hello <%=@company.name%></h3>
 
-    <%= f.label :dock_id %>
-    <%= f.number_field :dock_id %>
+<%= form_with model: @mission, local: true do |f| %>
+    
+    <%= f.hidden_field :company_id, value: session[:company_id] %>
+
+    <%= f.hidden_field :dock_id, value: session[:dock_id]%>
 
     <%=f.label :ship, "Ship Info"%><br>
     <%=f.text_area :ship%><br>
