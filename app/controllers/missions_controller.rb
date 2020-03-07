@@ -2,6 +2,7 @@ class MissionsController < ApplicationController
 
     def new
         @mission = Mission.new
+    
     end 
 
     def index 
@@ -24,7 +25,8 @@ class MissionsController < ApplicationController
         @mission = Mission.new(m_params)
         #  byebug
         if @mission.save
-            redirect_to missions_path
+             redirect_to docks_path
+            # redirect_to missions_path
             # redirect_to company_path
         else
             redirect_to new_mission_path
@@ -36,7 +38,7 @@ class MissionsController < ApplicationController
     end 
 
     def update
-        byebug
+        # byebug
         @mission = Mission.find(params[:id])
         if @mission.update(m_params)
             redirect_to mission_path

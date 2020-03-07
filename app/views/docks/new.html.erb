@@ -8,11 +8,11 @@
     <%= f.label :title, "Dock Name"%>
     <%= f.collection_select :title, Dock.all, :id, :title %><br>
 
-    <%= f.label :location, "Item"%>
-    <%= f.collection_select :location, Dock.all, :id, :location %><br>
+    <%= f.label :item, "Item"%>
+    <%= f.collection_select :item, Dock.all, :id, :item %><br>
 
     <!--<%=f.label "Item"%>
-    <%=f.text_field :location%><br>-->
+    <%=f.text_field :item%><br>-->
 
     <%=f.submit "Create"%>
 <%end%>

@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 2020_02_07_192842) do
   end
 
   create_table "docks", force: :cascade do |t|
+    t.integer "mission_id"
     t.string "title"
-    t.string "location"
+    t.string "item"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

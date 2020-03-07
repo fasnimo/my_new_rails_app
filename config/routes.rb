@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     
   resources :companies, only: [:index, :new, :create, :show]
   resources :docks do 
-    resources :missions
+    resources :missions, only: [:index, :create, :show]
   end 
   resources :missions 
 

@@ -45,7 +45,7 @@ class DocksController < ApplicationController
     private
 
     def d_params
-        params.require(:dock).permit(:title, :location)
+        params.require(:dock).permit(:mission_id, :title, :item)
     end 
 
 

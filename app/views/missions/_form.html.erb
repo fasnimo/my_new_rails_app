@@ -6,6 +6,12 @@
 
     <%= f.hidden_field :dock_id, value: session[:dock_id]%>
 
+    <%= f.label :title, "Dock Name"%>
+    <%= f.collection_select :title, Dock.all, :id, :title %><br>
+
+    <%= f.label :item, "Item"%>
+    <%= f.collection_select :item, Dock.all, :id, :item %><br>
+
     <%=f.label :ship, "Ship Info"%><br>
     <%=f.text_area :ship%><br>
     

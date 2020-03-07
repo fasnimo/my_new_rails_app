@@ -8,8 +8,8 @@
 
 dock_list = [["Shanghai", "Cell Phones"],["Singapore", "Cars"],["Shenzhen", "Medication"]]
 
-dock_list.each do |title, location|
-    Dock.create(title: title, location: location)
+dock_list.each do |title, item|
+    Dock.create(title: title, item: item)
 end 
 
 # shanghai = Dock.create(title: "Shanghai", location: "Yangzte Delta")
