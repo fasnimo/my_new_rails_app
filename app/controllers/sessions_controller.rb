@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
             # byebug
             session[:company_id] = @company.id
             # sessions[:company_id] = @company.id 
-            redirect_to docks_path
+            redirect_to ports_path
             # if user_info
             #     @company = Company.find_or_create_by(uid: user_info['uid']) do |u|
             #         u.name = user_info['info']['name']

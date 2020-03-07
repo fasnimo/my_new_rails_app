@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   root 'sessions#home'
     
   resources :companies, only: [:index, :new, :create, :show]
-  resources :docks do 
-    resources :missions, only: [:index, :create, :show]
+   
+  resources :ports, only: [:index, :show] do 
+    resources :missions
   end 
+  
   resources :missions 
 
   patch '/missions/:id', to: 'mission#update'

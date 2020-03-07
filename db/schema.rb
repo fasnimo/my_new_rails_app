@@ -19,18 +19,17 @@ ActiveRecord::Schema.define(version: 2020_02_07_192842) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "docks", force: :cascade do |t|
-    t.integer "mission_id"
-    t.string "title"
-    t.string "item"
+  create_table "missions", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "port_id"
+    t.string "ship"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "missions", force: :cascade do |t|
-    t.integer "company_id"
-    t.integer "dock_id"
-    t.string "ship"
+  create_table "ports", force: :cascade do |t|
+    t.string "title"
+    t.string "item"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
