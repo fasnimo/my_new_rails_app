@@ -2,10 +2,10 @@
 
 <%=link_to "New Mission", new_mission_path%><br>
 <ol>
-<% @docks.each do |d| %>
+<% @ports.each do |p| %>
     <li>
-    <p>Port Name: <%=d.title%></p>
-    <p>Item: <%=d.item%></p>
+    <p>Port Name: <%=p.title%></p>
+    <p>Item: <%=p.item%></p>
     </li>
 <% end %>
 </ol>

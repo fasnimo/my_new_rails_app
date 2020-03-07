@@ -18,8 +18,9 @@ class CompaniesController < ApplicationController
         if @company.save
             session[:company_id] = @company.id
             session[:name] = @company.name
-            redirect_to new_port_mission_path
-            # redirect_to new_dock_path
+            redirect_to new_mission_path
+            # redirect_to new_port_mission_path
+            
         else
             redirect_to root_path
         end

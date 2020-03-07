@@ -1,11 +1,13 @@
 <h1>Mission Index</h1>
 
+<%=link_to "New Mission", new_mission_path%><br>
+
 <ol>
 <% @missions.each do |m| %>
     <li>
     <p>Company: <%=m.company.name%></p>
     <p>Ship Info: <%=m.ship%></p>
-    <p>Port: <%=m.port.count%></p><br>
+    <%=link_to "Port Index", ports_path(m)%><br>
     <%=link_to "Mission Path", mission_path(m)%>
     </li>
 <% end %>

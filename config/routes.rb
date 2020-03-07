@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     
   resources :companies, only: [:index, :new, :create, :show]
    
-  resources :ports, only: [:index, :show] do 
+  resources :ports, only: [:index, :new, :show] do 
     resources :missions
   end 
   

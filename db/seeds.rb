@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-dock_list = [["Shanghai", "Cell Phones"],["Singapore", "Cars"],["Shenzhen", "Medication"]]
+port_list = [["Shanghai", "Cell Phones"],["Singapore", "Cars"],["Shenzhen", "Medication"]]
 
-dock_list.each do |title, item|
-    Dock.create(title: title, item: item)
+port_list.each do |title, item|
+    Port.create(title: title, item: item)
 end 
 
 # shanghai = Dock.create(title: "Shanghai", location: "Yangzte Delta")

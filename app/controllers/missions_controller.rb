@@ -1,7 +1,8 @@
 class MissionsController < ApplicationController
 
     def new
-        @mission = Mission.new
+        @mission = Mission.new(port_id: params[:port_id])
+
     end 
 
     def index 
@@ -24,9 +25,9 @@ class MissionsController < ApplicationController
         @mission = Mission.new(m_params)
         #  byebug
         if @mission.save
-            session[:port_id] = @port_id.id
-             redirect_to ports_path
-            # redirect_to missions_path
+            # session[:port_id] = @port.id
+            #  redirect_to ports_path
+             redirect_to missions_path
             # redirect_to company_path
         else
             redirect_to new_mission_path

@@ -2,7 +2,7 @@ class PortsController < ApplicationController
 
     def new
         @port = Port.new
-        @port.mission.build(ship: 'Shipment Sent')
+        @mission = Port.mission.build(params[:company_id, :port_id, :ship])
     end 
 
     def index
