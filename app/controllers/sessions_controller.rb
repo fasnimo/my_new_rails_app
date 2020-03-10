@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
             # byebug
             session[:company_id] = @company.id
             # sessions[:company_id] = @company.id 
-            redirect_to ports_path
+            redirect_to missions_path
             # if user_info
             #     @company = Company.find_or_create_by(uid: user_info['uid']) do |u|
             #         u.name = user_info['info']['name']
@@ -41,6 +41,7 @@ class SessionsController < ApplicationController
     def destroy
         if current_user
             session.destroy
+            flash[:notice] = "You have successfully logged out"
             redirect_to root_path
         end 
         #  session.delete(:current_user_id)

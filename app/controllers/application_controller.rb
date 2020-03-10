@@ -28,4 +28,11 @@ class ApplicationController < ActionController::Base
 #       redirect_to root_url
 #     end 
 #   end 
+
+def check_ownership(user=nil, object) 
+  user.id == object.user_id if user 
+  
+end 
+
 end
+

@@ -35,7 +35,9 @@ class MissionsController < ApplicationController
     end 
 
     def edit
-        @mission = Mission.find(params[:id])
+        if current_user
+            @mission = Mission.find(params[:id])
+        end
     end 
 
     def update

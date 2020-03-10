@@ -1,5 +1,7 @@
 <h1>Mission Index</h1>
 
+<h3>Current User: <%=@company.name%></h3>
+
 <%=link_to "New Mission", new_mission_path%><br>
 
 <ol>
@@ -7,7 +9,7 @@
     <li>
     <p>Company: <%=m.company.name%></p>
     <p>Shipment Info: <%=m.ship%></p>
-    
+
     <!--<%=link_to "Port Index", ports_path(m)%><br>-->
     <%=link_to "Show Your Mission, Mission Path", mission_path(m)%>
     </li>
