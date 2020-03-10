@@ -1,2 +1,8 @@
-<%=@port.title%>
-<%=@port.item%>
+<%= button_to "Sign Out", session_path, method: :delete %>
+<ol>
+<li>
+<h3><%=@company.name%></h3>
+<h3><%=@port.title%></h3>
+<h3><%=@port.item%></h3>
+</li>
+</ol>

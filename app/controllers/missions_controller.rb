@@ -1,7 +1,8 @@
 class MissionsController < ApplicationController
 
     def new
-        @mission = Mission.new(port_id: params[:port_id])
+        @mission = Mission.new
+        # @mission = Mission.new(port_id: params[:port_id])
 
     end 
 
@@ -23,12 +24,11 @@ class MissionsController < ApplicationController
         # end 
         # byebug
         @mission = Mission.new(m_params)
-        #  byebug
+        #   byebug
         if @mission.save
-            # session[:port_id] = @port.id
-            #  redirect_to ports_path
-             redirect_to missions_path
-            # redirect_to company_path
+            session[:ship] = @mission.ship
+            # byebug
+            redirect_to missions_path
         else
             redirect_to new_mission_path
         end 
@@ -42,7 +42,7 @@ class MissionsController < ApplicationController
         # byebug
         @mission = Mission.find(params[:id])
         if @mission.update(m_params)
-            redirect_to mission_path
+            redirect_to port_path
         else
             render 'edit'
         end 
@@ -53,8 +53,8 @@ class MissionsController < ApplicationController
     end
 
     def destroy
-        Mission.find(params[:id]).destroy
-        redirect_to mission_path
+       @mission = Mission.find(params[:id]).destroy
+        redirect_to missions_path
     end 
 
     private

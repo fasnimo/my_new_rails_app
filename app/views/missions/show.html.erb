@@ -5,4 +5,5 @@
 
 <%= @mission.ship%><br>
 <%= link_to "Edit Mission", edit_mission_path(@mission)%><br>
+<%= link_to 'Delete', mission_path(@mission), method: :delete %><br>
 <%= button_to "Sign Out", session_path, method: :delete %>

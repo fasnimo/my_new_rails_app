@@ -6,9 +6,12 @@
 <% @missions.each do |m| %>
     <li>
     <p>Company: <%=m.company.name%></p>
-    <p>Ship Info: <%=m.ship%></p>
-    <%=link_to "Port Index", ports_path(m)%><br>
-    <%=link_to "Mission Path", mission_path(m)%>
+    <p>Shipment Info: <%=m.ship%></p>
+    
+    <!--<%=link_to "Port Index", ports_path(m)%><br>-->
+    <%=link_to "Show Your Mission, Mission Path", mission_path(m)%>
     </li>
 <% end %>
 </ol>
+
+<%= button_to "Sign Out", session_path, method: :delete %>
