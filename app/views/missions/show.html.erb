@@ -1,14 +1,8 @@
 <h1>Mission Show</h1>
 
-
-
-
-
 <%= @mission.company.name%><br>
 
 <%= @mission.ship%><br>
-<%if check_ownership(current_user, @mission.company)%>
 <%= link_to "Edit Mission", edit_mission_path(@mission)%><br>
 <%= link_to 'Delete', mission_path(@mission), method: :delete %><br>
-<%end%>
 <%= button_to "Sign Out", session_path, method: :delete %>

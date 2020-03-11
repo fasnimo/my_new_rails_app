@@ -7,6 +7,7 @@ class MissionsController < ApplicationController
     end 
 
     def index 
+        # byebug
         @missions = Mission.all
     end 
 
