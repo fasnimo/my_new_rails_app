@@ -1,14 +1,19 @@
 <h1>Ports Index</h1>
 
 <%=link_to "New Mission", new_mission_path%><br>
+<%=link_to "New Port", new_port_path%><br>
+
+<%= button_to "Sign Out", session_path, method: :delete %>
+
 <ol>
 <% @ports.each do |p| %>
     <li>
     <p>Port Name: <%=p.title%></p>
     <p>Item: <%=p.item%></p>
-    <%=p.mission.ship%>
+    <%=link_to "Edit or Delete, Ports Show Path", port_path(p)%><br><br>
+    <%=link_to "Edit or Delete, Mission Show Path", mission_path(p)%>
     </li>
 <% end %>
 </ol>
 
-<%= button_to "Sign Out", session_path, method: :delete %>
+

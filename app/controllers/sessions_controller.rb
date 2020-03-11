@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorized, only: [:new, :create, :home]
+     skip_before_action :authorized, only: [:new, :create, :home]
+    #  skip_before_action :require_login, only: [:new, :create]
     
     def home
     end
@@ -18,7 +19,9 @@ class SessionsController < ApplicationController
             # byebug
             session[:company_id] = @company.id
             # sessions[:company_id] = @company.id 
-            redirect_to missions_path
+            redirect_to ports_path
+            # redirect_to missions_path
+            
             # if user_info
             #     @company = Company.find_or_create_by(uid: user_info['uid']) do |u|
             #         u.name = user_info['info']['name']

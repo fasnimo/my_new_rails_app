@@ -2,6 +2,7 @@ class PortsController < ApplicationController
 
     def new
         @port = Port.new
+         1.times { @port.missions.build }
         # @mission = Port.mission.build(params[:company_id, :port_id, :ship])
     end 
 
@@ -10,7 +11,7 @@ class PortsController < ApplicationController
     end 
 
     def create
-        @port = Port.new(p_params)
+        @port = Port.create(p_params)
         if @port.save
             session[:port_id] = @port.id
             session[:title] = @port.title
@@ -46,7 +47,8 @@ class PortsController < ApplicationController
     private
 
     def p_params
-        params.require(:port).permit(:title, :item)
+        # params.require(:port).permit(:title, :item, missions: [:id, :company_id, :port_id, :ship])
+        params.require(:port).permit(:title, :item, missions: [:id, :ship])
     end 
 
 

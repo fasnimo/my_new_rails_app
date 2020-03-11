@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
-    before_action :authorized
-    helper_method :current_user
-    helper_method :logged_in?
-    # helper_method :check_ownership
+  # before_action :require_login
+  before_action :authorized
+  helper_method :current_user, :logged_in?
+    # helper_method :logged_in?
+    
+    
+   
 
   def current_user
     @company ||= Company.find_by_id(session[:company_id])
@@ -12,28 +15,27 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !!current_user
+    current_user != nil
     # !current_user.nil?
   end 
 
   def authorized 
     redirect_to root_path unless logged_in?
   end
-  
+
+  # def require_login
+  #   unless logged_in?
+  #     flash[:error] = "You must be logged in to access this section"
+  #     redirect_to root_path
+  #   end 
+  # end 
 
 
-  # def check_ownership(company=nil, object) 
-  #   company.id == object.company_id if company  
-  # end 
-
-   #def after_sign_in_path_for(resource)
-    #     stored_location_for(resource) || session_path
-    #   end
-  
-    #   def require_login
-    #     if !current_company
-    #       redirect_to root_url
-    #     end 
+    # def require_login
+    #   if !current_user
+    #     redirect_to root_url   
     #   end 
+    
+    # end 
 
 end

@@ -1,0 +1,26 @@
+<h3>Hello <%=@company.name%></h3>
+
+<%= form_with model: @port, :mission => 'new', local: true do |f| %>
+
+    <!--<%= f.label :title, "Port Name"%>
+    <%= f.collection_select :title, Port.all, :id, :title %><br>
+
+    <%= f.label :item, "Item"%>
+    <%= f.collection_select :item, Port.all, :id, :item %><br>-->
+
+    <%= f.hidden_field :port_id, value: session[:port_id] %>
+
+    <%=f.label :title, "Name of Port"%>
+    <%=f.text_field :title%><br>
+    
+    <%=f.label :item, "Item"%>
+    <%=f.text_field :item%><br>
+
+    <%= f.fields_for :missions do |f|%>
+        <%=f.label :ship, "Brief Mission Info"%><br>
+        <%=f.text_field :ship%><br>
+        <%= f.check_box :_destroy %><br>
+    <%end%>
+
+    <%=f.submit "Create"%>
+<%end%>

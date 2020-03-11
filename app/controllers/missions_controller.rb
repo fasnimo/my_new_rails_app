@@ -2,6 +2,7 @@ class MissionsController < ApplicationController
 
     def new
         @mission = Mission.new
+        
         # @mission = Mission.new(port_id: params[:port_id])
 
     end 
@@ -9,6 +10,7 @@ class MissionsController < ApplicationController
     def index 
         # byebug
         @missions = Mission.all
+        
     end 
 
     def create

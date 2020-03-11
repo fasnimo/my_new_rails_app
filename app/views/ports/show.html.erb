@@ -1,8 +1,12 @@
+<h1>Welcome to Ports Show</h1>
 <%= button_to "Sign Out", session_path, method: :delete %>
 <ol>
 <li>
 <h3><%=@company.name%></h3>
 <h3><%=@port.title%></h3>
 <h3><%=@port.item%></h3>
+
+<%= link_to "Edit Port", edit_port_path(@port)%><br>
+<%= link_to 'Delete', port_path(@port), method: :delete %><br>
 </li>
 </ol>

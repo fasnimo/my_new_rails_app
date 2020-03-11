@@ -1,8 +1,11 @@
 <h1>Mission Index</h1>
 
-<h3>Current User: <%=@company.name%></h3>
+<h4><% if logged_in? -%>Welcome, <%= current_user.name %><% end -%></h4>
 
+<%=link_to "New Port", new_port_path%><br>
 <%=link_to "New Mission", new_mission_path%><br>
+
+<%= button_to "Sign Out", session_path, method: :delete %>
 
 <ol>
 <% @missions.each do |m| %>
@@ -11,9 +14,8 @@
     <p>Shipment Info: <%=m.ship%></p>
 
     <!--<%=link_to "Port Index", ports_path(m)%><br>-->
-    <%=link_to "Show Your Mission, Mission Path", mission_path(m)%>
+    <%=link_to "Edit or Delete, Mission Show Path", mission_path(m)%>
     </li>
 <% end %>
 </ol>
 
-<%= button_to "Sign Out", session_path, method: :delete %>
