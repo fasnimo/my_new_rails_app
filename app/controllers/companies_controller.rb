@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
+    # validates :name, presence: true
     # before_action :authenticate_company!, only: [:new, :create, :show]
     def new
         flash.keep(:notice)
@@ -14,14 +15,14 @@ class CompaniesController < ApplicationController
     end 
 
     def create
-        @company = Company.create(c_params)
+        @company = Company.new(c_params)
         
         if @company.save
             session[:company_id] = @company.id
             session[:name] = @company.name
-            # redirect_to new_port_path
-            redirect_to new_mission_path
-            # redirect_to new_port_mission_path
+            redirect_to new_port_path
+            #  needs fields_for to work redirect_to new_mission_path
+            #  redirect_to new_port_mission_path
             
         else
             redirect_to root_path

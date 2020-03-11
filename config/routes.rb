@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :ports
 
   resources :ports do 
-    resources :missions
+    resources :missions, only: [:index, :show]
   end 
   # resources :ports, only: [:index, :new, :show] do 
   #   resources :missions

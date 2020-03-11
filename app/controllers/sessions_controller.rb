@@ -12,16 +12,13 @@ class SessionsController < ApplicationController
     end 
         
     def create
-        #   byebug
-        @company = Company.find_by(name: params["/signin"][:name])  
-            #  byebug
-         if @company && @company.authenticate(params["/signin"][:password])
-            # byebug
+        @company = Company.find_by(name: params["/signin"][:name])     
+         if @company && @company.authenticate(params["/signin"][:password])  
             session[:company_id] = @company.id
-            # sessions[:company_id] = @company.id 
+            session[:port_id] = @port.id
             redirect_to ports_path
             # redirect_to missions_path
-            
+
             # if user_info
             #     @company = Company.find_or_create_by(uid: user_info['uid']) do |u|
             #         u.name = user_info['info']['name']

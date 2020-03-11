@@ -4,6 +4,8 @@
     
     <%= f.hidden_field :company_id, value: session[:company_id] %>
 
+    <%= f.hidden_field :port_id, value: session[:port_id]%>
+
     <!--<%= f.fields_for :port do |f|%>
     <%= f.label :title, "Port Name"%>
     <%= f.collection_select :title, Port.all, :id, :title %><br>
@@ -18,8 +20,8 @@
     <%=f.label :item, "Item"%>
     <%=f.text_field :item%><br>
   
-    <%=f.label :ship, "Ship Info"%><br>
-    <%=f.text_area :ship%><br>
+    <%=f.label :ship, "Brief Mission Info"%><br>
+    <%=f.text_field :ship%><br>
     
     <%=f.submit%>
 <%end%>

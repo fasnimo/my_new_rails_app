@@ -2,12 +2,6 @@
 
 <%= form_with model: @port, :mission => 'new', local: true do |f| %>
 
-    <!--<%= f.label :title, "Port Name"%>
-    <%= f.collection_select :title, Port.all, :id, :title %><br>
-
-    <%= f.label :item, "Item"%>
-    <%= f.collection_select :item, Port.all, :id, :item %><br>-->
-
     <%= f.hidden_field :port_id, value: session[:port_id] %>
 
     <%=f.label :title, "Name of Port"%>
@@ -15,11 +9,10 @@
     
     <%=f.label :item, "Item"%>
     <%=f.text_field :item%><br>
-
-    <%= f.fields_for :missions do |f|%>
-        <%=f.label :ship, "Brief Mission Info"%><br>
-        <%=f.text_field :ship%><br>
-        <%= f.check_box :_destroy %><br>
+    <h3>Missions</h3>
+    <%= f.fields_for :missions, @port.missions do |mf|%>
+        <%=mf.label :ship, "Brief Mission Info"%><br>
+        <%=mf.text_field :ship%><br>
     <%end%>
 
     <%=f.submit "Create"%>

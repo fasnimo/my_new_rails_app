@@ -1,6 +1,6 @@
 <h1>Ports Index</h1>
+<h4><% if logged_in? -%>Welcome, <%= current_user.name %><% end -%></h4>
 
-<%=link_to "New Mission", new_mission_path%><br>
 <%=link_to "New Port", new_port_path%><br>
 
 <%= button_to "Sign Out", session_path, method: :delete %>
@@ -11,7 +11,7 @@
     <p>Port Name: <%=p.title%></p>
     <p>Item: <%=p.item%></p>
     <%=link_to "Edit or Delete, Ports Show Path", port_path(p)%><br><br>
-    <%=link_to "Edit or Delete, Mission Show Path", mission_path(p)%>
+    
     </li>
 <% end %>
 </ol>

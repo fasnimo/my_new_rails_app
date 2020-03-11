@@ -1,8 +1,8 @@
 class PortsController < ApplicationController
-
+     before_action :logged_in?
     def new
         @port = Port.new
-         1.times { @port.missions.build }
+         2.times { @port.missions.build }
         # @mission = Port.mission.build(params[:company_id, :port_id, :ship])
     end 
 
@@ -11,21 +11,25 @@ class PortsController < ApplicationController
     end 
 
     def create
-        @port = Port.create(p_params)
+        @port = Port.new(p_params)
+        # binding.pry
         if @port.save
-            session[:port_id] = @port.id
-            session[:title] = @port.title
-            # @mission = Mission.create
-            redirect_to ports_path
+            # session[:port_id] = @port.id
+            # session[:title] = @port.title
+            #  redirect_to port_mission_path(@port)
+              redirect_to port_path(@port)
         else 
             redirect_to new_port_path
         end 
     end 
 
     def edit
+        @port = Port.find(params[:id])
+       
     end 
 
     def update
+        @port = Port.find(params[:id])
         if @port.update(p_params)
             redirect_to port_path
         else
@@ -35,20 +39,20 @@ class PortsController < ApplicationController
         
 
     def show
-        @port = Port.find_by(params[:id])
+        @port = Port.find(params[:id])
         # @dock = Dock.find_by(d_params)
     end 
 
     def destroy
         Port.find(params[:id]).destroy
-        redirect_to port_path
+        redirect_to ports_path
     end
 
     private
 
     def p_params
-        # params.require(:port).permit(:title, :item, missions: [:id, :company_id, :port_id, :ship])
-        params.require(:port).permit(:title, :item, missions: [:id, :ship])
+         params.require(:port).permit(:title, :item, missions_attributes: [:id, :ship])
+        # params.require(:port).permit(:title, :item, missions_attributes: [:id, :company_id, :port_id, :ship], companies: [:id, :name])
     end 
 
 

@@ -1,16 +1,15 @@
 class MissionsController < ApplicationController
-
+    # validates :ship, presence: true
+    
     def new
-        @mission = Mission.new
-        
-        # @mission = Mission.new(port_id: params[:port_id])
-
+        @mission = Mission.new(m_params)
     end 
 
     def index 
-        # byebug
-        @missions = Mission.all
-        
+        # binding.pry
+        # @missions = Mission.all
+        @port = Port.find_by(:id => params[:port_id])
+        @missions = @port.missions
     end 
 
     def create
@@ -26,28 +25,31 @@ class MissionsController < ApplicationController
         #     redirect_to new_mission_path
         # end 
         # byebug
-        @mission = Mission.new(m_params)
-        #   byebug
-        if @mission.save
-            session[:ship] = @mission.ship
-            # byebug
-            redirect_to missions_path
-        else
-            redirect_to new_mission_path
-        end 
+        
+        #  @mission = Mission.new(m_params)
+        # if @mission.save
+        #     # session[:ship] = @mission.ship
+        #     redirect_to port_mission_path
+        #     # redirect_to missions_path
+        # else
+        #     redirect_to new_mission_path
+        # end
+        @port = Port.find_by(:id => params[:port_id])
+        @mission = @port.missions.create(m_params)
+        redirect_to port_path(@port)
     end 
 
     def edit
-        if current_user
-            @mission = Mission.find(params[:id])
-        end
+        # if current_user
+        #     @mission = Mission.find(params[:id])
+        # end
     end 
 
     def update
         # byebug
         @mission = Mission.find(params[:id])
         if @mission.update(m_params)
-            redirect_to port_path
+            redirect_to port_path(@port)
         else
             render 'edit'
         end 
