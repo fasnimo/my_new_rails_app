@@ -68,6 +68,6 @@ class MissionsController < ApplicationController
 
     def m_params
         # params.require(:mission).permit(:ship)
-        params.require(:mission).permit(:company_id, :port_id, :ship)
+        params.require(:mission).permit(:company_id, :port_id, :ship, :complete)
     end 
 end

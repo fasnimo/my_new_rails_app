@@ -8,6 +8,7 @@ class PortsController < ApplicationController
 
     def index
         @ports = Port.all
+        Mission.complete
     end 
 
     def create
@@ -51,7 +52,7 @@ class PortsController < ApplicationController
     private
 
     def p_params
-         params.require(:port).permit(:title, :item, missions_attributes: [:id, :ship])
+         params.require(:port).permit(:title, :item, missions_attributes: [:id, :ship, :complete])
         # params.require(:port).permit(:title, :item, missions_attributes: [:id, :company_id, :port_id, :ship], companies: [:id, :name])
     end 
 

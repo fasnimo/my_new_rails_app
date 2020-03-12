@@ -5,12 +5,15 @@ class Port < ApplicationRecord
     validates_associated :missions
     accepts_nested_attributes_for :missions
 
-    def complete
-        self.missions.where(complete: true)
-    end 
+    scope :complete, -> {where complete: true}
+    # scope :imcomplete, -> {where complete: false}
+
+    # def complete
+    #     self.missions.where(complete: true)
+    # end 
 
 
-    def imcomplete
-        self.missions.where(complete: false)
-    end 
+    # def imcomplete
+    #     self.missions.where(complete: false)
+    # end 
 end
