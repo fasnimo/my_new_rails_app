@@ -9,11 +9,14 @@
     
     <%=f.label :item, "Item"%>
     <%=f.text_field :item%><br>
+    
     <h3>Missions</h3>
     <%= f.fields_for :missions, @port.missions do |mf|%>
         <%=mf.label :ship, "Brief Mission Info"%><br>
         <%=mf.text_field :ship%><br>
-    <%end%>
+         <%= mf.label :complete, "Complete?"%>
+        <%= mf.check_box :complete %><br>
+    <% end %>
 
     <%=f.submit "Create"%>
 <%end%>

@@ -8,16 +8,25 @@ class PortsController < ApplicationController
 
     def index
         @ports = Port.all
-        Mission.complete
+        # @mission = Mission.find_by(:id => params[:id])
+        # @mission.complete
     end 
 
     def create
         @port = Port.new(p_params)
+        # @port.missions.build(p_params[:missions_attributes]['0'])
+        # @port.missions.build(p_params[:missions_attributes]['1'])
         # binding.pry
         if @port.save
+            @port.missions.each do |mission|
+                mission.company_id = session[:company_id]
+                mission.save
+            end 
             # session[:port_id] = @port.id
             # session[:title] = @port.title
             #  redirect_to port_mission_path(@port)
+            # binding.pry
+
               redirect_to port_path(@port)
         else 
             redirect_to new_port_path

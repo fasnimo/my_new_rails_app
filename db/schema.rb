@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_02_07_192842) do
     t.integer "company_id"
     t.integer "port_id"
     t.string "ship"
-    t.boolean "complete"
+    t.boolean "complete", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -3,7 +3,7 @@
 <h4><% if logged_in? -%>Welcome, <%= current_user.name %><% end -%></h4>
 
 <%=link_to "New Port", new_port_path%><br>
-<%=link_to "New Mission", new_mission_path%><br>
+
 
 <%= button_to "Sign Out", session_path, method: :delete %>
 
@@ -12,9 +12,9 @@
     <li>
     <p>Company: <%=m.company.name%></p>
     <p>Shipment Info: <%=m.ship%></p>
-
-    <!--<%=link_to "Port Index", ports_path(m)%><br>-->
-    <%=link_to "Edit or Delete, Mission Show Path", mission_path(m)%>
+    <p>Complete <%= m.complete %></p>
+    <%=link_to "Port Index", ports_path(m)%><br>
+    
     </li>
 <% end %>
 </ol>

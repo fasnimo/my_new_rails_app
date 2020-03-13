@@ -34,6 +34,7 @@ class MissionsController < ApplicationController
         # else
         #     redirect_to new_mission_path
         # end
+        binding.pry
         @port = Port.find_by(:id => params[:port_id])
         @mission = @port.missions.create(m_params)
         redirect_to port_path(@port)

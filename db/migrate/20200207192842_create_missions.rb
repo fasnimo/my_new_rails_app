@@ -4,7 +4,7 @@ class CreateMissions < ActiveRecord::Migration[6.0]
       t.integer :company_id
       t.integer :port_id
       t.string :ship
-      t.boolean :complete
+      t.boolean :complete, :default => false
 
       t.timestamps
     end
