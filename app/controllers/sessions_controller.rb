@@ -58,7 +58,7 @@ class SessionsController < ApplicationController
         #         u.name = user_info['info']['name']
         #         u.password = user_info['info']['password']
         #     end
-        #     redirect_to docks_path
+        #     redirect_to ports_path
         # else
         #     redirect_to root_path
         # end 
