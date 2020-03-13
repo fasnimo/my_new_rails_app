@@ -12,6 +12,21 @@ class SessionsController < ApplicationController
     end 
         
     def create
+            # binding.pry
+        if user_info = request.env['omniauth.auth']
+            # raise user_info.inspect
+            oauth_email = request.env['omniauth.auth']['nickname']
+            if @company = Company.find_by(:name => oauth_email)
+                session[:company_id] = @company.id
+                redirect_to ports_path(@port)
+            else
+                @company = Company.create(:name => oauth_email, :password => SecureRandom.hex)
+                oauth_email
+                session[:company_id] = @company.id
+                # binding.pry
+                redirect_to new_port_path
+            end
+        else 
         @company = Company.find_by(name: params["/signin"][:name])     
          if @company && @company.authenticate(params["/signin"][:password])  
             session[:company_id] = @company.id
@@ -29,8 +44,8 @@ class SessionsController < ApplicationController
         else 
             redirect_to signup_path
             # redirect_to root_path
-        end 
-            
+            end
+        end  
     end 
 
     def page_requires_login
@@ -49,25 +64,26 @@ class SessionsController < ApplicationController
         #  redirect_to root_path, notice: "Logged out!"
      end 
 
-    def oauth_login
-        byebug
-        Company.from_omniauth(user_info)
-        # byebug
-        # if user_info
-        #     @company = Company.find_or_create_by(uid: user_info['uid']) do |u|
-        #         u.name = user_info['info']['name']
-        #         u.password = user_info['info']['password']
-        #     end
-        #     redirect_to ports_path
-        # else
-        #     redirect_to root_path
-        # end 
-    end 
+    # def oauth_login
+    #     raise "stop".inspect
+    #     # binding.pry
+    #     @company = Company.from_omniauth(user_info)
+    #     # binding.pry
+    #     if user_info
+    #         @company = Company.find_or_create_by(uid: user_info['uid']) do |u|
+    #             u.name = user_info['info']['name']
+    #             u.password = user_info['info']['password']
+    #         end
+    #         redirect_to ports_path
+    #     else
+    #         redirect_to root_path
+    #     end 
+    # end 
 
      private
 
      def user_info
-        request.env['omniauth.auth']
+        request.env['omniauth.auth']['uid']['info']
         # request.env['omniauth.auth']['exra_info']
      end
 

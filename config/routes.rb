@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   post '/signup', to: 'companies#create'
   get 'authorized', to: 'sessions#page_requires_login'
 
-  get '/auth/:provider/callback', to: 'sessions#oauth_login', via: [:get, :post]
+  get '/auth/github/callback', to: 'sessions#create'
+  # , via: [:get, :post]
 end
