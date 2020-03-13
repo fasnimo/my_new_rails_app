@@ -3,7 +3,10 @@
 
 <ol>
     <li>
-    <h3>Company Name: <%=@company.name%></h3>
+    <% @port.companies.each do |company| %>
+        <h3>Company Name: <%=company.name%></h3>
+    <% end %>    
+    
     <h3>Port Title: <%=@port.title%></h3>
     <h3>Port Items: <%=@port.item%></h3>
 
@@ -12,6 +15,7 @@
     <ul>
     <% @port.missions.complete.each do |miss| %>
         <li>
+            
             <p>Brief Mission Info: <%= miss.ship %></p>
             <p>Complete: <%= miss.complete%></p>
         </li>

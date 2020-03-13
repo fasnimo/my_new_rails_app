@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         @company = Company.find_by(name: params["/signin"][:name])     
          if @company && @company.authenticate(params["/signin"][:password])  
             session[:company_id] = @company.id
-            session[:port_id] = @port.id
+            # session[:port_id] = @port.id
             redirect_to ports_path
             # redirect_to missions_path
 

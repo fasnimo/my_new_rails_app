@@ -1,32 +1,23 @@
 class PortsController < ApplicationController
-     before_action :logged_in?
+    #  before_action :logged_in?
+    before_action :require_login, only: [:edit, :update, :destroy]
     def new
         @port = Port.new
-         2.times { @port.missions.build }
-        # @mission = Port.mission.build(params[:company_id, :port_id, :ship])
+         1.times { @port.missions.build }
     end 
 
     def index
+        # binding.pry
         @ports = Port.all
-        # @mission = Mission.find_by(:id => params[:id])
-        # @mission.complete
     end 
 
     def create
         @port = Port.new(p_params)
-        # @port.missions.build(p_params[:missions_attributes]['0'])
-        # @port.missions.build(p_params[:missions_attributes]['1'])
-        # binding.pry
         if @port.save
             @port.missions.each do |mission|
                 mission.company_id = session[:company_id]
                 mission.save
             end 
-            # session[:port_id] = @port.id
-            # session[:title] = @port.title
-            #  redirect_to port_mission_path(@port)
-            # binding.pry
-
               redirect_to port_path(@port)
         else 
             redirect_to new_port_path
@@ -35,12 +26,17 @@ class PortsController < ApplicationController
 
     def edit
         @port = Port.find(params[:id])
+        if current_user.nil?
+            redirect_to '/ports/:port_id/missions'
+        end
        
     end 
 
     def update
         @port = Port.find(params[:id])
-        if @port.update(p_params)
+        @port.update(p_params)
+        if @port.save
+        # if @port.update(p_params)
             redirect_to port_path
         else
             render 'edit'
@@ -50,6 +46,7 @@ class PortsController < ApplicationController
 
     def show
         @port = Port.find(params[:id])
+        
         # @dock = Dock.find_by(d_params)
     end 
 

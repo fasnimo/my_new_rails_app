@@ -8,7 +8,6 @@
 <ol>
 <% @ports.each do |p| %>
     <li>
-    <p>Company: <%= p.company.name %></p>
     <p>Port Name: <%=p.title%></p>
     <p>Item: <%=p.item%></p>
     <%=link_to "Edit or Delete, Ports Show Path", port_path(p)%><br><br>
