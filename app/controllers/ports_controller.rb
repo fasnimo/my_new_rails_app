@@ -1,6 +1,7 @@
 class PortsController < ApplicationController
     #  before_action :logged_in?
-    before_action :require_login, only: [:edit, :update, :destroy]
+    # before_action :require_login, only: [:edit, :update, :destroy]
+    before_action :require_login
     def new
         @port = Port.new
          1.times { @port.missions.build }

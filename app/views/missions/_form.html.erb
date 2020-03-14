@@ -6,14 +6,6 @@
 
     <%= f.hidden_field :port_id, value: session[:port_id]%>
 
-    <!--<%= f.fields_for :port do |f|%>
-    <%= f.label :title, "Port Name"%>
-    <%= f.collection_select :title, Port.all, :id, :title %><br>
-
-    <%= f.label :item, "Item"%>
-    <%= f.collection_select :item, Port.all, :id, :item %><br>-->
-    <%end%>
-  
     <%=f.label :title, "Name of Port"%>
     <%=f.text_field :title%><br>
     

@@ -1,24 +1,22 @@
-# README
+# Company missions associated with ports
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails libray for a TODO List for logistic companies to plan out deliveries.
 
-Things you may want to cover:
+## Installation
+Run following in terminal:
 
-* Ruby version
+- Clone this repo
+-`bundle install` to install dependencies
+-`rails db:migrate` to make all database migrations
+-`rails s` to start the local server
 
-* System dependencies
+# Code Overview
+## Folders
+-`app/models`
+-`app/views`
+-`app/controllers`
+-`config`
+-`db`
 
-* Configuration
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
