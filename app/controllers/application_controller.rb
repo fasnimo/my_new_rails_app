@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
    
 
   def current_user
-    binding.pry
+    #  binding.pry
     @company ||= Company.find_by_id(session[:company_id])
     # if session[:current_user_id]
     #   @current_user = Company.find(session[:current_user_id])

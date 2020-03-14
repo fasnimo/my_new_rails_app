@@ -11,20 +11,18 @@ class SessionsController < ApplicationController
     def login
     end 
         
-    def create
-            # binding.pry
+    def create   
         if user_info = request.env['omniauth.auth']
-            # raise user_info.inspect
-            oauth_email = request.env['omniauth.auth']['nickname']
-            if @company = Company.find_by(:name => oauth_email)
+            oauth_name = request.env['omniauth.auth']['info']['nickname']
+            if @company = Company.find_by(:name => oauth_name)
                 session[:company_id] = @company.id
-                redirect_to ports_path(@port)
+                redirect_to ports_path
             else
-                @company = Company.create(:name => oauth_email, :password => SecureRandom.hex)
-                oauth_email
+                @company = Company.create(:name => oauth_name)
+                oauth_name
                 session[:company_id] = @company.id
                 # binding.pry
-                redirect_to new_port_path
+                redirect_to ports_path
             end
         else 
         @company = Company.find_by(name: params["/signin"][:name])     
@@ -83,10 +81,15 @@ class SessionsController < ApplicationController
      private
 
      def user_info
-        request.env['omniauth.auth']['uid']['info']
+        request.env['omniauth.auth']['provider']['info']
         # request.env['omniauth.auth']['exra_info']
      end
 
 end
+
+
+
+
+
 
 

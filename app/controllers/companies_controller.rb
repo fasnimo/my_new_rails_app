@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-    skip_before_action :authorized, only: [:new, :create]
+     skip_before_action :authorized, only: [:new, :create]
     # validates :name, presence: true
     # before_action :authenticate_company!, only: [:new, :create, :show]
     def new
@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
     end 
 
     def create
+        # binding.pry
         @company = Company.new(c_params)
         
         if @company.save
