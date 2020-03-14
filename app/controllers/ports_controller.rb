@@ -7,7 +7,6 @@ class PortsController < ApplicationController
     end 
 
     def index
-        # binding.pry
         @ports = Port.all
     end 
 
@@ -46,8 +45,6 @@ class PortsController < ApplicationController
 
     def show
         @port = Port.find(params[:id])
-        
-        # @dock = Dock.find_by(d_params)
     end 
 
     def destroy
@@ -59,7 +56,6 @@ class PortsController < ApplicationController
 
     def p_params
          params.require(:port).permit(:title, :item, missions_attributes: [:id, :ship, :complete])
-        # params.require(:port).permit(:title, :item, missions_attributes: [:id, :company_id, :port_id, :ship], companies: [:id, :name])
     end 
 
 

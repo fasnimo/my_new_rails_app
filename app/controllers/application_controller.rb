@@ -3,25 +3,15 @@ class ApplicationController < ActionController::Base
   before_action :authorized
   helper_method :current_user, :logged_in?
   
-    
-    
-   
-
   def current_user
-    #  binding.pry
     @company ||= Company.find_by_id(session[:company_id])
-    # if session[:current_user_id]
-    #   @current_user = Company.find(session[:current_user_id])
-    # end 
   end
 
   def logged_in?
     current_user != nil
-    # !current_user.nil?
   end 
 
   def authorized 
-    # binding.pry
     redirect_to root_path unless logged_in?
   end
 
@@ -31,13 +21,5 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end 
   end 
-
-
-    # def require_login
-    #   if !current_user
-    #     redirect_to root_url   
-    #   end 
-    
-    # end 
 
 end

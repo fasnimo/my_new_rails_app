@@ -4,10 +4,7 @@ class CompaniesController < ApplicationController
     # before_action :authenticate_company!, only: [:new, :create, :show]
     def new
         flash.keep(:notice)
-        @company = Company.new
-        # if  session[:current_user]
-        #     redirect_to root_path, notice: "Already logged in!"
-        # end 
+        @company = Company.new 
     end 
 
     def index
@@ -15,16 +12,11 @@ class CompaniesController < ApplicationController
     end 
 
     def create
-        # binding.pry
         @company = Company.new(c_params)
-        
         if @company.save
             session[:company_id] = @company.id
             session[:name] = @company.name
             redirect_to new_port_path
-            #  needs fields_for to work redirect_to new_mission_path
-            #  redirect_to new_port_mission_path
-            
         else
             redirect_to root_path
         end
