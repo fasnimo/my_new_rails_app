@@ -13,16 +13,9 @@ class SessionsController < ApplicationController
         
     def create   
         if user_info = request.env['omniauth.auth']
-            oauth_name = request.env['omniauth.auth']['info']['nickname']
-            if @company = Company.find_by(:name => oauth_name)
-                session[:company_id] = @company.id
-                redirect_to ports_path
-            else
-                @company = Company.create(:name => oauth_name, :password => SecureRandom.hex)
-                oauth_name
-                session[:company_id] = @company.id
-                redirect_to ports_path
-            end
+            @company = Company.find_or_create_by_omniauth(user_info)
+            session[:company_id] = @company.id
+            redirect_to ports_path
         else 
             @company = Company.find_by(name: params["/signin"][:name])     
             if @company && @company.authenticate(params["/signin"][:password])  
