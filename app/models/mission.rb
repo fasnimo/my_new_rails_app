@@ -3,8 +3,5 @@ class Mission < ApplicationRecord
     belongs_to :company, optional: true
     
     scope :complete, -> {where(complete: true)}
-
-    
-
-    
+ 
 end

@@ -1,6 +1,4 @@
 class PortsController < ApplicationController
-    #  before_action :logged_in?
-    # before_action :require_login, only: [:edit, :update, :destroy]
     before_action :require_login
     def new
         @port = Port.new
@@ -36,7 +34,6 @@ class PortsController < ApplicationController
         @port = Port.find(params[:id])
         @port.update(p_params)
         if @port.save
-        # if @port.update(p_params)
             redirect_to port_path
         else
             render 'edit'

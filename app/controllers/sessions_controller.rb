@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
      skip_before_action :authorized, only: [:new, :create, :home]
-      skip_before_action :require_login, only: [:new, :create]
+     skip_before_action :require_login, only: [:new, :create]
     
     def home
     end
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
                 session[:company_id] = @company.id
                 redirect_to ports_path
             else
-                @company = Company.create(:name => oauth_name)
+                @company = Company.create(:name => oauth_name, :password => SecureRandom.hex)
                 oauth_name
                 session[:company_id] = @company.id
                 redirect_to ports_path
