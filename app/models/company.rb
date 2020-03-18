@@ -1,6 +1,8 @@
 class Company < ApplicationRecord
     has_many :missions
     has_many :ports, through: :missions
+    validates_presence_of :name
+    validates_uniqueness_of :name
     has_secure_password
 
 

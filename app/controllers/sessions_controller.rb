@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
                 session[:company_id] = @company.id
                 redirect_to ports_path  
             else 
+                flash[:error] = "You are not a member, please sign up!"
                 redirect_to signup_path
             end
         end  

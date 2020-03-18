@@ -18,6 +18,7 @@ class PortsController < ApplicationController
             end 
               redirect_to port_path(@port)
         else 
+            flash[:error] = "Please enter name of Port!"
             redirect_to new_port_path
         end 
     end 
@@ -46,7 +47,8 @@ class PortsController < ApplicationController
     end 
 
     def destroy
-        Port.find(params[:id]).destroy
+        @port = Port.find(params[:id])
+        @port.destroy
         redirect_to ports_path
     end
 
