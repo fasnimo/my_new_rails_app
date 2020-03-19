@@ -16,8 +16,7 @@ class MissionsController < ApplicationController
     end 
 
     def edit  
-        @mission = Mission.find(params[:id])
-        # binding.pry   
+        @mission = Mission.find(params[:id]) 
     end 
 
     def update
@@ -25,7 +24,6 @@ class MissionsController < ApplicationController
          @mission.update(m_params)
         if @mission.save
             redirect_to port_mission_path(@mission.port)
-            # redirect_to port_path(@port)
         else
             render 'edit'
         end 
