@@ -1,13 +1,13 @@
 <h3>Hello <%=@company.name%></h3>
 
-<%= form_with model: @mission, :port => 'new', local: true do |f| %>
+<%= form_with model: @mission do |f| %>
     
     <%= f.hidden_field :company_id, value: session[:company_id] %>
 
     <%= f.hidden_field :port_id, value: session[:port_id]%>
 
-    <%=f.label :title, "Name of Port"%>
-    <%=f.text_field :title%><br>
+    <%=f.label :title, "Select a Port"%>
+    <%= f.collection_select :port_id, Port.all, :id, :title%><br>
     
     <%=f.label :item, "Item"%>
     <%=f.text_field :item%><br>
@@ -15,5 +15,5 @@
     <%=f.label :ship, "Brief Mission Info"%><br>
     <%=f.text_field :ship%><br>
     
-    <%=f.submit%>
+    <%=f.submit "Create"%>
 <%end%>

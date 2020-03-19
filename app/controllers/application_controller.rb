@@ -21,4 +21,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end 
   end 
+
+  def authorized_editor 
+    unless logged_in? && current_user == Mission.find(params[:id]).company
+      flash[:error] = "You are not authorized to edit this mission!"
+      redirect_to root_path
+      # redirect_to mission_path(Mission.find(params[:id]))
+    end
+  end
 end

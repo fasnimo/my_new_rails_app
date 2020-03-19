@@ -14,6 +14,7 @@
     <p>Shipment Info: <%=m.ship%></p>
     <p>Complete <%= m.complete %></p>
     <%=link_to "Port Index", ports_path(m)%><br>
+    <%=link_to "Mission Show", port_mission_path(m.port, m)%>
     
     </li>
 <% end %>

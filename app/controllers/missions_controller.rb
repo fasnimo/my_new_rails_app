@@ -1,5 +1,5 @@
 class MissionsController < ApplicationController
-    
+    before_action :authorized_editor, only: [:edit]
     def new
         @mission = Mission.new(m_params)
     end 
@@ -15,13 +15,17 @@ class MissionsController < ApplicationController
         redirect_to port_path(@port)
     end 
 
-    def edit     
+    def edit  
+        @mission = Mission.find(params[:id])
+        # binding.pry   
     end 
 
     def update
         @mission = Mission.find(params[:id])
-        if @mission.update(m_params)
-            redirect_to port_path(@port)
+         @mission.update(m_params)
+        if @mission.save
+            redirect_to port_mission_path(@mission.port)
+            # redirect_to port_path(@port)
         else
             render 'edit'
         end 
@@ -32,8 +36,9 @@ class MissionsController < ApplicationController
     end
 
     def destroy
+        binding.pry
        @mission = Mission.find(params[:id]).destroy
-        redirect_to missions_path
+        redirect_to ports_path
     end 
 
     private

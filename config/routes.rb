@@ -10,10 +10,7 @@ Rails.application.routes.draw do
 
   resources :ports do 
     resources :missions, only: [:index, :show]
-  end 
-  # resources :ports, only: [:index, :new, :show] do 
-  #   resources :missions
-  # end 
+  end  
   
   resources :missions 
 
@@ -26,5 +23,4 @@ Rails.application.routes.draw do
   get 'authorized', to: 'sessions#page_requires_login'
 
   get '/auth/github/callback', to: 'sessions#create'
-  # , via: [:get, :post]
 end
