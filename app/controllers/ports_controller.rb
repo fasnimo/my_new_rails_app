@@ -26,7 +26,7 @@ class PortsController < ApplicationController
     def edit
         @port = Port.find(params[:id])
         if current_user.nil?
-            redirect_to '/ports/:port_id/missions'
+            redirect_to port_missions_path
         end
        
     end 
