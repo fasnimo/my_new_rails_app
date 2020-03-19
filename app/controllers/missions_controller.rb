@@ -34,7 +34,6 @@ class MissionsController < ApplicationController
     end
 
     def destroy
-        binding.pry
        @mission = Mission.find(params[:id]).destroy
         redirect_to ports_path
     end 
