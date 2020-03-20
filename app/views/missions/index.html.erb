@@ -11,6 +11,7 @@
 <% @missions.each do |m| %>
     <li>
     <p>Company: <%=m.company.name%></p>
+    <p>Port: <%=m.port.title%></p>
     <p>Shipment Info: <%=m.ship%></p>
     <p>Complete <%= m.complete %></p>
     <%=link_to "Back", port_path(m.port, m)%><br>

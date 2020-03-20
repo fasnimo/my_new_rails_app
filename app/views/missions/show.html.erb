@@ -6,10 +6,11 @@
 <h3>Port: <%=@mission.port.title%></h3>
 <h3>Port Item: <%=@mission.port.item%></h3>
 <h3>Mission Info: <%=@mission.ship%></h3>
+<h3>Complete: <%=@mission.complete%> </h3>
 </li>
 </ol>
 
-<%= link_to "Edit Mission", edit_mission_path(@mission)%><br>
+<%= link_to "Edit Mission Info", edit_mission_path(@mission)%><br>
 <%= link_to 'Delete', mission_path(@mission), method: :delete %><br>
 <%= link_to "Back", port_path(@mission.port)%>
 <%= button_to "Sign Out", session_path, method: :delete %>
