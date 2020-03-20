@@ -48,6 +48,6 @@ class MissionsController < ApplicationController
     
     def m_found
         # or  @mission = Mission.find_by(params[:id])
-        @mission = Mission.find(params[:id])
+        @mission = Mission.find_by(:id => params[:id])
     end 
 end

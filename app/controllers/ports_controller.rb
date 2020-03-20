@@ -61,6 +61,6 @@ class PortsController < ApplicationController
 
     def found
         # or @port.find(params[:id])
-        @port = Port.find_by(params[:id])
+        @port = Port.find_by(:id => params[:id])
     end 
 end
