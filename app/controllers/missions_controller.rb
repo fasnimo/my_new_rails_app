@@ -16,7 +16,6 @@ class MissionsController < ApplicationController
     end 
 
     def edit  
-        # binding.pry
         @mission = Mission.find(params[:id]) 
     end 
 

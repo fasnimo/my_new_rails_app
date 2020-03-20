@@ -19,9 +19,6 @@ class PortsController < ApplicationController
               @port[:errors]
               redirect_to port_path(@port)
         else 
-            binding.pry
-            @port.errors[:title]
-            @port.errors[:item]
             render new_port_path
         end 
     end 

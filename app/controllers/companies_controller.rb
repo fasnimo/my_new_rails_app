@@ -17,8 +17,6 @@ class CompaniesController < ApplicationController
             session[:name] = @company.name
             redirect_to new_port_path
         else
-            @company.errors[:name]
-            @company.errors[:password]
             render new_company_path
         end
     end 
