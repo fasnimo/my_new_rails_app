@@ -1,6 +1,17 @@
 <h3>Hello <%=@company.name%></h3>
 
-<%= form_with model: @port, :mission => 'new', local: true do |f| %>
+<%= form_for @port do |f| %>
+    
+    <% if @port.errors.any? %>
+        <div id="error_explanation">
+        <h2>Error:</h2>
+        <ul>
+            <% @port.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
 
     <%= f.hidden_field :port_id, value: session[:port_id] %>
 

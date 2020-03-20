@@ -1,6 +1,17 @@
 <h3>Hello <%=@company.name%></h3>
 
-<%= form_with model: @mission, local: true do |f| %>
+<%= form_for @mission do |f| %>
+
+    <% if @mission.errors.any? %>
+        <div id="error_explanation">
+        <h2>Error:</h2>
+        <ul>
+            <% @mission.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
     
     <%= f.hidden_field :company_id, value: session[:company_id] %>
 

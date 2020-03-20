@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
      skip_before_action :authorized, only: [:new, :create]
      
     def new
-        flash.keep(:notice)
+        # flash.keep(:notice)
         @company = Company.new 
     end 
 
@@ -17,7 +17,9 @@ class CompaniesController < ApplicationController
             session[:name] = @company.name
             redirect_to new_port_path
         else
-            redirect_to root_path
+            @company.errors[:name]
+            @company.errors[:password]
+            render new_company_path
         end
     end 
 

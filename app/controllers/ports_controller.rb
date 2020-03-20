@@ -16,10 +16,13 @@ class PortsController < ApplicationController
                 mission.company_id = session[:company_id]
                 mission.save
             end 
+              @port[:errors]
               redirect_to port_path(@port)
         else 
-            flash[:error] = "Please enter name of Port!"
-            redirect_to new_port_path
+            binding.pry
+            @port.errors[:title]
+            @port.errors[:item]
+            render new_port_path
         end 
     end 
 
