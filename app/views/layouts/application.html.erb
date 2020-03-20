@@ -11,6 +11,9 @@
    
   <body>
   
+    <% if flash[:error] -%>
+      <p class="error"><%= flash[:error] %></p>
+    <% end -%>
 
     <% if session[:current_user_id]%>
       <nav>

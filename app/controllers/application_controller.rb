@@ -17,15 +17,15 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      # flash[:error] = "You must be logged in to access this section"
+       flash[:error] = "You must be logged in to access this section"
       redirect_to root_path
     end 
   end 
 
   def authorized_editor 
     unless logged_in? && current_user == Mission.find(params[:id]).company
-      # flash[:error] = "You are not authorized to edit this mission!"
-      redirect_to root_path
+       flash[:error] = "You are not authorized to edit this mission!"
+       redirect_to ports_path
     end
   end
 end
