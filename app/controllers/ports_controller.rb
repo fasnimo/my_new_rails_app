@@ -1,5 +1,6 @@
 class PortsController < ApplicationController
     before_action :require_login
+    before_action :found
     def new
         @port = Port.new
          1.times { @port.missions.build }
@@ -24,7 +25,7 @@ class PortsController < ApplicationController
     end 
 
     def edit
-        @port = Port.find(params[:id])
+        # @port = Port.find(params[:id])
         if current_user.nil?
             redirect_to port_missions_path
         end
@@ -32,7 +33,7 @@ class PortsController < ApplicationController
     end 
 
     def update
-        @port = Port.find(params[:id])
+        # @port = Port.find(params[:id])
         @port.update(p_params)
         if @port.save
             redirect_to port_path
@@ -43,11 +44,11 @@ class PortsController < ApplicationController
         
 
     def show
-        @port = Port.find(params[:id])
+        # @port = Port.find(params[:id])
     end 
 
     def destroy
-        @port = Port.find(params[:id])
+        # @port = Port.find(params[:id])
         @port.destroy
         redirect_to ports_path
     end
@@ -58,5 +59,8 @@ class PortsController < ApplicationController
          params.require(:port).permit(:title, :item, missions_attributes: [:id, :ship, :complete])
     end 
 
-
+    def found
+        # or @port.find(params[:id])
+        @port = Port.find_by(params[:id])
+    end 
 end
