@@ -7,9 +7,6 @@ class SessionsController < ApplicationController
 
     def new
     end 
-
-    def login
-    end 
         
     def create   
         if user_info = request.env['omniauth.auth']
@@ -29,9 +26,7 @@ class SessionsController < ApplicationController
     end 
 
     def page_requires_login
-
     end 
-
 
     def destroy
         if current_user

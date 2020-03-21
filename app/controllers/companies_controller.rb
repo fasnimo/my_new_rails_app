@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
      skip_before_action :authorized, only: [:new, :create]
      
     def new
-        # flash.keep(:notice)
+        flash.keep(:notice)
         @company = Company.new 
     end 
 
