@@ -55,7 +55,7 @@ class PortsController < ApplicationController
     private
 
     def p_params
-         params.require(:port).permit(:port, :title, :item, missions_attributes: [:id, :ship, :complete])
+         params.require(:port).permit(:title, :item, missions_attributes: [:id, :ship, :complete])
     end 
 
     def found
