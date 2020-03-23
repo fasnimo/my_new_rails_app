@@ -1,12 +1,6 @@
 <h1>Ports Index</h1>
 
-
 <h4><% if logged_in? -%>Welcome, <%= current_user.name %><% end -%></h4>
-
-<%= form_tag(ports_path method: :get) do %>
-    Search for a Port: <%= text_field_tag :title, params[:title] %>
-    <%= submit_tag 'Search', name: nil %>
-<% end %>
 
 <%=link_to "New Port", new_port_path%><br>
 

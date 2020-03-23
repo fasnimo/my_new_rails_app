@@ -3,7 +3,7 @@
 <% @companies.each do |c| %>
     <li>
     <p>Name: <%=c.name%></p>
-    <%=link_to "To Ports", new_port_path%>
+    <%=link_to "To Ports", ports_path%>
     </li>
 <% end %>
 </ol>

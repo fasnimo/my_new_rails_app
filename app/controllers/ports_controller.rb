@@ -7,11 +7,7 @@ class PortsController < ApplicationController
     end 
 
     def index
-        if params[:title]
-            @ports = Port.where('title Like ?', "%#{params[:title]}%")
-        else 
-            @ports = Port.all
-        end 
+        @ports = Port.all
     end 
 
     def create
