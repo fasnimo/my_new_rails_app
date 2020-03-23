@@ -7,7 +7,11 @@ class PortsController < ApplicationController
     end 
 
     def index
-        @ports = Port.all
+        if params[:title]
+            @ports = Port.where('title Like ?', "%#{params[:title]}%")
+        else 
+            @ports = Port.all
+        end 
     end 
 
     def create
@@ -17,7 +21,6 @@ class PortsController < ApplicationController
                 mission.company_id = session[:company_id]
                 mission.save
             end 
-              @port[:errors]
               redirect_to port_path(@port)
         else 
             render new_port_path
@@ -25,7 +28,6 @@ class PortsController < ApplicationController
     end 
 
     def edit
-        # @port = Port.find(params[:id])
         if current_user.nil?
             redirect_to port_missions_path
         end
@@ -33,7 +35,6 @@ class PortsController < ApplicationController
     end 
 
     def update
-        # @port = Port.find(params[:id])
         @port.update(p_params)
         if @port.save
             redirect_to port_path
@@ -44,11 +45,9 @@ class PortsController < ApplicationController
         
 
     def show
-        # @port = Port.find(params[:id])
     end 
 
     def destroy
-        # @port = Port.find(params[:id])
         @port.destroy
         redirect_to ports_path
     end
@@ -56,11 +55,10 @@ class PortsController < ApplicationController
     private
 
     def p_params
-         params.require(:port).permit(:title, :item, missions_attributes: [:id, :ship, :complete])
+         params.require(:port).permit(:port, :title, :item, missions_attributes: [:id, :ship, :complete])
     end 
 
     def found
-        # or @port.find(params[:id])
         @port = Port.find_by(:id => params[:id])
     end 
 end
