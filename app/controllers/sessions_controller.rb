@@ -25,9 +25,6 @@ class SessionsController < ApplicationController
         end  
     end 
 
-    def page_requires_login
-    end 
-
     def destroy
         if current_user
             session.destroy

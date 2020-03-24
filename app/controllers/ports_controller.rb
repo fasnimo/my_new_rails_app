@@ -7,7 +7,7 @@ class PortsController < ApplicationController
     end 
 
     def index
-        @ports = Port.all
+         @ports = Port.search(params[:term])
     end 
 
     def create

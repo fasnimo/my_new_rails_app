@@ -7,4 +7,16 @@ class Port < ApplicationRecord
     validates_associated :missions
     accepts_nested_attributes_for :missions
 
+    def self.search(term)
+        if term
+            port = Port.find_by(:title => term)
+            if port
+                self.where(:id => port.id)
+            else 
+                @ports = Port.all
+            end 
+        else
+            @ports = Port.all 
+        end 
+    end 
 end

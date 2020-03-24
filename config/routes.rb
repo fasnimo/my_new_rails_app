@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :ports do 
     resources :missions, only: [:index, :show]
   end  
-  
+
   resources :missions 
 
   patch '/missions/:id', to: 'mission#update'
@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   delete '/session', to: 'sessions#destroy'
   get '/signup', to: 'companies#new'
   post '/signup', to: 'companies#create'
-  get 'authorized', to: 'sessions#page_requires_login'
 
   get '/auth/github/callback', to: 'sessions#create'
 end
