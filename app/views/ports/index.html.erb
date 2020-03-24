@@ -3,7 +3,7 @@
 <h4><% if logged_in? %>Welcome, <%= current_user.name %><% end %></h4>
 
 <%= form_tag("/ports", method: 'get') do %>
-    <%= text_field_tag :term %>
+    Search Port Title: <%= text_field_tag :term %>
     <%= submit_tag "Search" %>
 <% end %> 
 
