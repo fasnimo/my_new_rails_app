@@ -3,7 +3,7 @@ class PortsController < ApplicationController
     before_action :found
     def new
         @port = Port.new
-         1.times { @port.missions.build }
+        @port.missions.build
     end 
 
     def index
