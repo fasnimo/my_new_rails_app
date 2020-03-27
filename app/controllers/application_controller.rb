@@ -28,11 +28,4 @@ class ApplicationController < ActionController::Base
        redirect_to ports_path
     end
   end
-
-  def authorized_edit
-    unless logged_in? && current_user == Port.find(params[:id]).company_ids
-       flash[:error] = "You are not authorized to edit this mission!"
-       redirect_to ports_path
-    end
-  end
 end
