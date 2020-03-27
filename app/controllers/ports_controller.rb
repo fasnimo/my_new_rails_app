@@ -1,6 +1,7 @@
 class PortsController < ApplicationController
     before_action :require_login
     before_action :found
+    before_action :authorized_edit, only: [:edit]
     def new
         @port = Port.new
         @port.missions.build
