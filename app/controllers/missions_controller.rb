@@ -2,7 +2,7 @@ class MissionsController < ApplicationController
     before_action :authorized_editor, only: [:edit]
     before_action :m_found
     def new
-        @mission = Mission.new(m_params)
+        @mission = Mission.new
     end 
 
     def index 
