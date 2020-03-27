@@ -11,7 +11,7 @@ class Port < ApplicationRecord
         if term
             port = Port.find_by(:title => term)
             if port
-                self.where(:id => port.id)
+                self.where(:id => port)
             else 
                 @ports = Port.all
             end 
