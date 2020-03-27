@@ -24,10 +24,6 @@ class PortsController < ApplicationController
     end 
 
     def edit
-        if current_user.nil?
-            redirect_to port_missions_path
-        end
-       
     end 
 
     def update
