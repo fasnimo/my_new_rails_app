@@ -14,7 +14,6 @@ class CompaniesController < ApplicationController
         @company = Company.new(c_params)
         if @company.save
             session[:company_id] = @company.id
-            session[:name] = @company.name
             redirect_to new_port_path
         else
             render new_company_path
