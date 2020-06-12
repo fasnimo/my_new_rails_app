@@ -12,7 +12,8 @@ class CompaniesController < ApplicationController
 
     def create
         @company = Company.new(c_params)
-        if @company.save
+        if @company.valid?
+            @company.save
             session[:company_id] = @company.id
             redirect_to new_port_path
         else

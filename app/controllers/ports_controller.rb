@@ -13,7 +13,8 @@ class PortsController < ApplicationController
 
     def create
         @port = Port.new(p_params)
-        if @port.save
+        if @port.valid?
+            @port.save
             @port.missions.each do |mission|
                 mission.company_id = session[:company_id]
                 mission.save
