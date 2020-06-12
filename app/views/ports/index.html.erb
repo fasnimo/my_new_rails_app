@@ -15,11 +15,11 @@
 <% @ports.each do |p| %>
     <li>
     <% p.companies.each do |pc|%>
-        <p>Company: <%=pc.name%></p>
+        <h5>Company: <%=pc.name%></h5>
     <% end %>
-    <p>Port Name: <%=p.title%></p>
-    <p>Item: <%=p.item%></p>
-    <%=link_to "Ports Show Path", port_path(p)%><br><br>
+    <h5>Port Name: <%=p.title%></h5>
+    <h5>Item: <%=p.item%></h5>
+    <%=link_to "Port Details", port_path(p)%><br><br>
     
     </li>
 <% end %>
