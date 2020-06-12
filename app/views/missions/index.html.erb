@@ -9,10 +9,10 @@
 <ol>
 <% @missions.each do |m| %>
     <li>
-    <p>Company: <%=m.company.name%></p>
-    <p>Port: <%=m.port.title%></p>
-    <p>Shipment Info: <%=m.ship%></p>
-    <p>Complete <%= m.complete %></p>
+    <h5>Company: <%=m.company.name%></h5>
+    <h5>Port: <%=m.port.title%></h5>
+    <h5>Shipment Info: <%=m.ship%></h5>
+    <h5>Complete <%= m.complete %></h5>
     <%=link_to "Back", port_path(m.port, m)%><br>
     <%=link_to "Mission Show", port_mission_path(m.port, m)%>
     
