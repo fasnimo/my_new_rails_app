@@ -1,6 +1,6 @@
 class MissionsController < ApplicationController
     before_action :authorized_editor, only: [:edit]
-    before_action :m_found
+    before_action :misson
     def new
         @mission = Mission.new
     end 
@@ -42,7 +42,7 @@ class MissionsController < ApplicationController
         params.require(:mission).permit(:company_id, :port_id, :ship, :complete)
     end
     
-    def m_found
+    def misson
         @mission = Mission.find_by(:id => params[:id])
     end 
 end

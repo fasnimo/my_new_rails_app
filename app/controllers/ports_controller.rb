@@ -1,6 +1,6 @@
 class PortsController < ApplicationController
     before_action :require_login
-    before_action :found
+    before_action :port
     
     def new
         @port = Port.new
@@ -52,7 +52,7 @@ class PortsController < ApplicationController
          params.require(:port).permit(:title, :item, missions_attributes: [:id, :ship, :complete])
     end 
 
-    def found
+    def port
         @port = Port.find_by(:id => params[:id])
     end 
 end
